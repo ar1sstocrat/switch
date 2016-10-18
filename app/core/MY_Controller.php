@@ -36,12 +36,7 @@ class Admin_Controller extends MY_Controller
     public function __construct() 
     {
         parent::__construct();
-        if($this->ion_auth->logged_in() == false || $this->group_id!==1)
-        {
-            $this->session->set_flashdata('message', 'У вас недостаточно прав для просмотра данной страницы!!!');
-            redirect('admin/auth/login');
-        }
-        
+                
         $this->load->model('mod_admin');
         $this->data = new stdClass();
         $this->load->library('grocery_CRUD');
