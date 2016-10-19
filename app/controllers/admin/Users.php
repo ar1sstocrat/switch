@@ -31,7 +31,7 @@ class Users extends Admin_Controller
                 ->display_as('group_id', 'Группа')
                 ->display_as('department_id', 'Отдел')
                 ->set_relation('post_id','post','name')
-                ->set_relation('group_id','groups','description')
+                ->set_relation_n_n('group_id', 'users_groups','groups','group_id','user_id', 'description')
                 ->set_relation('department_id','department','name')
                 ->unset_add()
                 ->unset_fields($this->unset_field);
