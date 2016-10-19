@@ -17,8 +17,7 @@ class Main extends Public_Controller
     public function index()
     {
         $this->menu = $this->mod_main->get_menu();
-        $this->firephp->log($this->menu);
-        
+        $this->firephp->log($this->user);
         $this->tpl
                 ->set('current_section', 'Главная')
                 ->set('user', $this->user)

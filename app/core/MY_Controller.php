@@ -10,6 +10,7 @@ class MY_Controller extends CI_Controller
     public $group_id = null;
     public $user = null;
     public $menu;
+    public $path_admin = 'admin/';
 
     public function __construct() 
     {
@@ -36,7 +37,23 @@ class Admin_Controller extends MY_Controller
     public function __construct() 
     {
         parent::__construct();
-                
+        
+        if($this->ion_auth->logged_in())
+        {
+            if($this->ion_auth->is_admin())
+            {
+                header('url:/admin');
+            }
+            else
+            {
+                redirect(site_url());
+            }
+        }
+        else
+        {
+            redirect('/admin/login');
+        }
+        
         $this->load->model('mod_admin');
         $this->data = new stdClass();
         $this->load->library('grocery_CRUD');
@@ -75,7 +92,6 @@ class Admin_Controller extends MY_Controller
         $this->data->css_files = $this->data->css_files + $this->css_files;
         $this->data->current_section = $this->current_section;
         $this->load->view('admin/main', $this->data);
-        $this->firephp->log($this->js_files);
     }
 }
 
@@ -91,7 +107,7 @@ class Public_Controller extends MY_Controller
         parent::__construct();
         if($this->ion_auth->logged_in() == false)
         {
-            redirect('/auth');
+            redirect('/login');
         }
     }
 }

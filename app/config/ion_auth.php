@@ -29,6 +29,7 @@
 */
 $config['tables']['users']           = 'users';
 $config['tables']['groups']          = 'groups';
+$config['tables']['users_groups']    = 'users_groups';
 $config['tables']['login_attempts']  = 'login_attempts';
 
 /*
@@ -37,8 +38,8 @@ $config['tables']['login_attempts']  = 'login_attempts';
  | Joins from users.id
  | Joins from groups.id
  */
-$config['join']['groups']  = 'group_id';
-//$config['join']['groups'] = 'group_id';
+$config['join']['users']  = 'user_id';
+$config['join']['groups'] = 'group_id';
 
 /*
  | -------------------------------------------------------------------------

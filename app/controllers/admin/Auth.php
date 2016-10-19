@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Auth extends MY_Controller
 {
     public $group_id = null;
-    public $path_admin = 'admin/';
+    
     protected $rules_auth = array(
         array(
             'field' => 'email',
@@ -46,23 +46,6 @@ class Auth extends MY_Controller
     public function __construct() 
     {
         parent::__construct();
-        
-        //$this->group_id = $this->session->userdata('group_id');
-    }
-    
-    public function index()
-    {
-        
-        if($this->ion_auth->logged_in() && $this->group_id === 1)
-        {
-            
-            redirect(site_url($this->path_admin));
-        }
-        else
-        {
-            $this->session->set_flashdata('message', 'У вас недостаточно прав для просмотра данной страницы!!!');
-            redirect(site_url("{$this->path_admin}auth/login"), 'refresh');            
-        }
     }
     
     public function login()
@@ -75,6 +58,7 @@ class Auth extends MY_Controller
         {
             $remember = (bool) $this->input->post('remember');
             $login = $this->ion_auth->login($this->input->post('email'), $this->input->post('password'), $remember);
+            $this->firephp->log($this->user);
             if($login)
             {
                 redirect($this->path_admin);
@@ -82,7 +66,7 @@ class Auth extends MY_Controller
             else
             {
                 $this->session->set_flashdata('message', $this->ion_auth->errors());
-                redirect(site_url("{$this->path_admin}auth/login"));
+                redirect(site_url("{$this->path_admin}/login"));
             }
         }
         
