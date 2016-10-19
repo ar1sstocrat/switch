@@ -93,6 +93,11 @@ class Admin_Controller extends MY_Controller
         $this->data->current_section = $this->current_section;
         $this->load->view('admin/main', $this->data);
     }
+    
+    public function _get_datetime($value, $row)
+    {
+        return date('d-m-Y H:i', $value);
+    }
 }
 
 
