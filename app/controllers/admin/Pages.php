@@ -20,5 +20,10 @@ class Pages extends Admin_Controller
         
         $this->current_section = 'Страницы';
         $this->table_db = 'pages';
+        $this->crud
+                ->columns('name', 'uri', 'active')
+                ->fields('name', 'uri', 'active')
+                ->unset_delete();
+        $this->_example_output();
     }
 }
