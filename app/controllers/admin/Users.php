@@ -37,7 +37,7 @@ class Users extends Admin_Controller
                 ->callback_column('last_login', array($this,'_get_datetime'))
                 ->set_relation('post_id','post','name')
                 ->set_relation_n_n('group_id', 'users_groups','groups','group_id','user_id', 'description')
-                ->set_relation('department_id','department','name')
+                ->set_relation('department_id','department','short_name')
                 ->unset_add()
                 ->unset_fields($this->unset_field);
         $this->_example_output();

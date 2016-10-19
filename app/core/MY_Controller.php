@@ -65,13 +65,14 @@ class Admin_Controller extends MY_Controller
         $this->crud->display_as('date', 'Дата');
         $this->crud->display_as('text', 'Текст');
         $this->crud->display_as('uri', 'Ссылка');
+        $this->crud->display_as('description', 'Описание');
         $this->crud->set_language('russian');
         $this->menu = array(
             '' => 'На сайт',
             'admin' => 'Панель администратора',
             'admin/users' => 'Пользователи',
             'admin/pages' => 'Страницы',
-            'admin/department' => 'Отдел', 
+            'admin/department' => 'Отдел/Служба', 
             'admin/post' => 'Должность',
             'admin/switch' => 'Коммутаторы ОК',
             'admin/ip' => 'Реальные ІР-адреса',
