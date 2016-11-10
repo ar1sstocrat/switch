@@ -6,4 +6,5 @@ $config['smtp_password'] = 'voliawebmastervin1234';  //Измените паро
 $config['smtp_debug'] = true;  //Если Вы хотите видеть сообщения ошибок, укажите true вместо false
 $config['smtp_charset'] = 'utf-8';	//кодировка сообщений. (windows-1251 или utf-8, итд)
 $config['smtp_from'] = 'ADMIN TECH'; //Ваше имя - или имя Вашего сайта. Будет показывать при прочтении в поле "От кого"
+$config['default_pwd'] = 'StpAdmin!';
 
