@@ -895,7 +895,7 @@ class Ion_auth_model extends CI_Model
 
 		$this->trigger_events('extra_where');
 
-		$query = $this->db->select($this->identity_column . ', username,group_id, email, id, password, active, last_login')
+		$query = $this->db->select($this->identity_column . ', username, email, id, password, active, last_login')
 		                  ->where($this->identity_column, $this->db->escape_str($identity))
 		                  ->limit(1)
 		                  ->get($this->tables['users']);
@@ -1326,10 +1326,37 @@ class Ion_auth_model extends CI_Model
 	 * @return bool
 	 * @author Ben Edmunds
 	 **/
-	public function add_to_group($group_id, $user_id=false)
+	public function add_to_group($group_ids, $user_id=false)
 	{
-
-		return true;
+            $this->trigger_events('add_to_group');
+            // if no id was passed use the current users id
+            $user_id || $user_id = $this->session->userdata('user_id');
+            if(!is_array($group_ids))
+            {
+		$group_ids = array($group_ids);
+            }
+            $return = 0;
+            // Then insert each into the database
+            foreach ($group_ids as $group_id)
+            {
+		if ($this->db->insert($this->tables['users_groups'], array( $this->join['groups'] => (float)$group_id, $this->join['users'] => (float)$user_id)))
+		{
+                    if (isset($this->_cache_groups[$group_id])) 
+                    {
+                        $group_name = $this->_cache_groups[$group_id];
+                    }
+                    else
+                    {
+                        $group = $this->group($group_id)->result();
+			$group_name = $group[0]->name;
+			$this->_cache_groups[$group_id] = $group_name;
+                    }
+                    $this->_cache_user_in_group[$user_id][$group_id] = $group_name;
+                    // Return the number of groups added
+                    $return += 1;
+                }
+            }
+            return $return;
 	}
 
 	/**

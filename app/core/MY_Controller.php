@@ -17,7 +17,7 @@ class MY_Controller extends CI_Controller
         parent::__construct();
         $this->user = $this->ion_auth->user()->row_array();
         $this->session->set_userdata($this->user);
-        $this->group_id = $this->user['group_id'];
+        //$this->group_id = $this->user['group_id'];
         $this->menu = array();
         $this->tpl->set('messages', $this->session->flashdata('messages'));
     }
@@ -98,6 +98,27 @@ class Admin_Controller extends MY_Controller
     public function _get_datetime($value, $row)
     {
         return date('d-m-Y H:i', $value);
+    }
+    
+    public function _change_priviliges($post_array, $primary_key)
+    {
+        $this->ion_auth->remove_from_group(NULL, $primary_key);
+        if(isset($post_array['group_id']))
+        {
+            $this->ion_auth->add_to_group($post_array['group_id'],$primary_key);
+        }
+        return TRUE;
+    }
+    
+    public function _group_array()
+    {
+        $groups = $this->ion_auth->groups()->result_array();
+        $result = array();
+        foreach($groups as $group)
+        {
+            $result[$group['id']] = $group['description'];
+        }
+        return $result;
     }
 }
 
