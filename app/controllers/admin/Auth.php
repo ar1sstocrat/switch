@@ -109,8 +109,8 @@ class Auth extends MY_Controller
         
         $this->tpl
                 ->set('message', $this->session->flashdata('message'))
-                ->set_view('no_mail_out', $this->path_admin.'no_mail_out')
-                ->set_view('mail_out', $this->path_admin.'mail_out')
+                ->set_view('mail_not_sent', $this->path_admin.'no_mail_out')
+                ->set_view('mail_sent', $this->path_admin.'mail_out')
                 ->set_view('output', $this->path_admin.'restore_pass')
                 ->build('admin/no_auth');
     }

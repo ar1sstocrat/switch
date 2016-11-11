@@ -22,7 +22,7 @@
             <div class="col-md-4 col-md-offset-4 text-center logo-margin ">
               <img src="http://volia.com/user/img/logo/logo.png?1454069191" alt=""/>
                 </div>
-          <?=(isset($message))?$message:$output?>
+          <?=$output;?>
         </div>
     </div>
 

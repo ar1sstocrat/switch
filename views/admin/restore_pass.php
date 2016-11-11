@@ -1,5 +1,5 @@
 <?php
 if(isset($message))
-    echo $mail_out;
+    echo $mail_sent;
 else
-    echo $no_mail_out;
+    echo $mail_not_sent;
