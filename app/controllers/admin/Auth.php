@@ -173,18 +173,4 @@ class Auth extends MY_Controller
         }
         
     }
-
-        public function test()
-    {        
-        $this->load->library('email');
-            
-            //$this->email->initialize($config);
-            $this->email->from('voliawebmastervin@yandex.ru', 'ADMIN TECH');
-            $this->email->reply_to('taras.besarab@volia.com', 'Taras Besarab');
-            $this->email->to('taras88lav@mail.ru');
-            $this->email->subject('Reset password');
-            $this->email->message('Test mail');
-            if($this->email->send()) echo 'YES';
-            else echo 'NO';
-    }
 }
