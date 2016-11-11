@@ -72,7 +72,9 @@ class Auth extends MY_Controller
         
         $this->tpl
                 ->set('message', $this->session->flashdata('message'))
-                ->set_view('output', $this->path_admin.'auth_form')
+                ->set_view('auth_error', $this->path_admin.'message')
+                ->set_view('auth_form', $this->path_admin.'auth_form')
+                ->set_view('output', $this->path_admin.'auth_select')
                 ->build('admin/no_auth');
     }   
     
@@ -96,7 +98,7 @@ class Auth extends MY_Controller
             if($forgoten)
             {
                 $this->session->set_flashdata('message', $this->ion_auth->messages());
-                $this->reset_password($forgoten['forgotten_password_code']);
+                //$this->reset_password($forgoten['forgotten_password_code']);
                 //header('refresh:3;url=/admin/');
             }
             else
@@ -109,8 +111,8 @@ class Auth extends MY_Controller
         
         $this->tpl
                 ->set('message', $this->session->flashdata('message'))
-                ->set_view('mail_not_sent', $this->path_admin.'no_mail_out')
-                ->set_view('mail_sent', $this->path_admin.'mail_out')
+                ->set_view('mail_not_sent', $this->path_admin.'mail_not_sent')
+                ->set_view('mail_sent', $this->path_admin.'message')
                 ->set_view('output', $this->path_admin.'restore_pass')
                 ->build('admin/no_auth');
     }
@@ -130,8 +132,8 @@ class Auth extends MY_Controller
         }
         $this->tpl
                 ->set('message', $this->session->flashdata('message'))
-                ->set_view('no_mail_out', $this->path_admin.'no_mail_out')
-                ->set_view('mail_out', $this->path_admin.'mail_out')
+                ->set_view('mail_not_sent', $this->path_admin.'mail_not_sent')
+                ->set_view('mail_sent', $this->path_admin.'message')
                 ->set_view('output', $this->path_admin.'restore_pass')
                 ->build('admin/no_auth');
     }
@@ -139,7 +141,7 @@ class Auth extends MY_Controller
     public function test()
     {
         $this->load->library('mail');
-        $send = $this->mail->send_mail('Taras Besarab', 'tarasbesarab@gmail.com', 'TEST', 'test message');
+        $send = $this->mail->send_mail('Taras Besarab', 'taras88lav@mail.ru', 'TEST', 'test message');
         if($send) echo 'DO!!!';
         else echo 'FUCK!!!';
     }
