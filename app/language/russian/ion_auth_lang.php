@@ -48,6 +48,13 @@ $lang['delete_successful'] 		 	 = 'Учетная запись удалена';
 $lang['delete_unsuccessful'] 		 	 = 'Невозможно удалить учетную запись';
 
 // Email Subjects - TODO Please Translate
-$lang['email_forgotten_password_subject']    = 'Проверка забытого пароля';
+$lang['email_forgotten_password_subject']    = 'Восстановление забытого пароля';
 $lang['email_new_password_subject']          = 'Новый пароль';
 $lang['email_activation_subject']            = 'Активация учетной записи';
+$lang['email_forgot_password_heading']       = 'Сброс пароля для пользователя %s';
+$lang['email_forgot_password_subheading']    = 'Нажмите на ссылку для %s.';
+$lang['email_forgot_password_link']          = 'восстановления пароля';
+$site = site_url();
+$lang['email_forgot_password_hbody']         = "Это письмо отправлено с сайта $site.<br><br>  Вы получили это письмо, так как этот e-mail адрес был использован при регистрации на сайте. Если Вы не отправляли запрос на восстановление пароля, просто проигнорируйте это письмо и удалите его.<br><br>------------------------------------------------<br>Инструкция по восстановлению<br>------------------------------------------------";
+$lang['email_forgot_password_fbody']         = 'Если и при этих действиях ничего не получилось, возможно Ваш аккаунт удалён. В этом случае, обратитесь к Администратору, для разрешения проблемы.';
+$lang['email_forgot_password_footer']        = "--<br>С уважением,<br>Администрация $site";

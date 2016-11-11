@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Панель администратора -SIMINTA</title>
+    <?php foreach($css_files as $files=>$css):?>
+    <link type="text/css" rel="stylesheet" href="<?=$css?>">
+    <?php endforeach;?>
     <!-- Core CSS - Include with every page -->
     <link href="/assets/admin/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
     <link href="/assets/admin/font-awesome/css/font-awesome.css" rel="stylesheet" />
@@ -12,9 +15,7 @@
     <link href="/assets/admin/css/main-style.css" rel="stylesheet" />
     <!-- Page-Level CSS -->
     <link href="/assets/admin/plugins/morris/morris-0.4.3.min.css" rel="stylesheet" />
-    <?php foreach($css_files as $files=>$css):?>
-    <link type="text/css" rel="stylesheet" href="<?=$css?>">
-    <?php endforeach;?>
+    
    </head>
 <body>
     <!--  wrapper -->

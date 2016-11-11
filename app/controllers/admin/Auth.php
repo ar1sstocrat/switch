@@ -46,6 +46,8 @@ class Auth extends MY_Controller
     public function __construct() 
     {
         parent::__construct();
+        $this->load->library('email');
+        $this->load->language('ion_auth');
     }
     
     public function login()
@@ -97,9 +99,13 @@ class Auth extends MY_Controller
             $this->firephp->log($forgoten);
             if($forgoten)
             {
+                if($this->_send_forgotten_code($forgoten))
+                {
                 $this->session->set_flashdata('message', $this->ion_auth->messages());
-                //$this->reset_password($forgoten['forgotten_password_code']);
                 //header('refresh:3;url=/admin/');
+                }
+                //$this->reset_password($forgoten['forgotten_password_code']);
+                
             }
             else
             {
@@ -138,11 +144,45 @@ class Auth extends MY_Controller
                 ->build('admin/no_auth');
     }
     
-    public function test()
+    public function _send_forgotten_code($data = NULL)
     {
-        $this->load->library('mail');
-        $send = $this->mail->send_mail('Taras Besarab', 'taras88lav@mail.ru', 'TEST', 'test message');
-        if($send) echo 'DO!!!';
-        else echo 'FUCK!!!';
+        if(!$data)
+        {
+            $this->session->set_flashdata('message', 'Нет данных для сброса пароля');
+            return FALSE;
+        }
+        else
+        {
+            $message = $this->load->view('auth/email', $data, TRUE);
+            $this->email->clear();
+            $this->email->from($this->config->item('admin_email'), $this->config->item('admin_name'));
+            $this->email->to($data['identity']);
+            $this->email->subject($this->config->item('site_title') .'-'. lang('email_forgotten_password_subject'));
+            $this->email->message($message);
+            if($this->email->send())
+            {
+                return TRUE;
+            }
+            else
+            {
+                $this->session->set_flashdata('message', $this->email->print_debugger());
+                return FALSE;
+            }
+        }
+        
+    }
+
+        public function test()
+    {        
+        $this->load->library('email');
+            
+            //$this->email->initialize($config);
+            $this->email->from('voliawebmastervin@yandex.ru', 'ADMIN TECH');
+            $this->email->reply_to('taras.besarab@volia.com', 'Taras Besarab');
+            $this->email->to('taras88lav@mail.ru');
+            $this->email->subject('Reset password');
+            $this->email->message('Test mail');
+            if($this->email->send()) echo 'YES';
+            else echo 'NO';
     }
 }
