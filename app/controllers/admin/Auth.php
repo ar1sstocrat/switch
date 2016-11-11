@@ -101,11 +101,14 @@ class Auth extends MY_Controller
             {
                 if($this->_send_forgotten_code($forgoten))
                 {
-                $this->session->set_flashdata('message', $this->ion_auth->messages());
-                //header('refresh:3;url=/admin/');
+                    $this->session->set_flashdata('message', $this->ion_auth->messages());
+                    header('refresh:3;url=/admin/');
                 }
-                //$this->reset_password($forgoten['forgotten_password_code']);
-                
+                else
+                {
+                    $this->session->set_flashdata('message', lang('email_forgot_password_error'));
+                    header('refresh:5;url=/admin/auth/restore/');
+                }
             }
             else
             {
@@ -165,7 +168,6 @@ class Auth extends MY_Controller
             }
             else
             {
-                $this->session->set_flashdata('message', $this->email->print_debugger());
                 return FALSE;
             }
         }
