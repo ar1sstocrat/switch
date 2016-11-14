@@ -74,7 +74,7 @@ class Admin_Controller extends MY_Controller
             'admin/pages' => 'Страницы',
             'admin/department' => 'Отдел/Служба', 
             'admin/post' => 'Должность',
-            'admin/switch' => 'Коммутаторы ОК',
+            'admin/elcon' => 'Коммутаторы ОК',
             'admin/ip' => 'Реальные ІР-адреса',
             'lou' => 'ЛОУ',
             'address_base' => 'Адрессная база',
