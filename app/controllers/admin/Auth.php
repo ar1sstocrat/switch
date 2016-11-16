@@ -32,12 +32,12 @@ class Auth extends MY_Controller
     protected $reset_pass = array(
         array(
             'field' => 'new_pass',
-            'label' => 'Пароль',
+            'label' => 'Новый пароль',
             'rules' => 'trim|required|min_length[3]|htmlspecialchars|encode_php_tags'
         ),
         array(
             'field' => 'new_pass_confirm',
-            'label' => 'Пароль',
+            'label' => 'Подтверждение пароля',
             'rules' => 'trim|required|min_length[3]|htmlspecialchars|encode_php_tags|matches[new_pass]'
         )
     );
@@ -128,26 +128,55 @@ class Auth extends MY_Controller
     
     public function reset_password($code = NULL)
     {
-        if(!$code) show_404 ();
-        
         $user = $this->ion_auth->forgotten_password_check($code);
-        $this->firephp->log($user);
-        if($user)
+        if(!$user || !$code)
         {
-            $this->form_validation->set_rules($this->reset_pass);
-            $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
-            $this->ion_auth_model->set_error_delimiters('<p class="error">', '</p>');
-            $this->ion_auth_model->set_message_delimiters('<p class="successful">', '</p>');
+            show_404();            
         }
-        $this->tpl
-                ->set('message', $this->session->flashdata('message'))
-                ->set_view('mail_not_sent', $this->path_admin.'mail_not_sent')
-                ->set_view('mail_sent', $this->path_admin.'message')
-                ->set_view('output', $this->path_admin.'restore_pass')
+        else
+        {
+           $this->tpl
+                ->set('email', $user->email)
+                ->set_view('output', $this->path_admin.'reset_pass_form')
                 ->build('admin/no_auth');
+        }
     }
     
-    public function _send_forgotten_code($data = NULL)
+    public function change_password()
+    {
+        if(empty($this->input->post())) show_404 ();
+        $this->form_validation->set_rules($this->reset_pass);
+        $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+        $this->ion_auth_model->set_error_delimiters('<p class="error">', '</p>');
+        $this->ion_auth_model->set_message_delimiters('<p class="successful">', '</p>');
+        $validation = $this->form_validation->run();
+        if($validation)
+        {
+            
+            $reset = $this->ion_auth_model->reset_password($this->input->post('email'), $this->input->post('new_pass'));
+            $this->firephp->log($reset);
+            if($reset)
+            {
+                $this->session->set_flashdata('message', $this->ion_auth->messages());
+                header('refresh:3;url=/admin/');
+            }
+            else
+            {
+                $this->session->set_flashdata('message', $this->ion_auth->errors());
+                header('refresh:3;url=/admin/restore/');
+            }
+        }
+        $this->tpl
+                ->set('email', $this->input->post('email'))
+                ->set('message', $this->session->flashdata('message'))
+                ->set_view('reset_pass_form', $this->path_admin.'reset_pass_form')
+                ->set_view('reset_pass_fail', $this->path_admin.'message')
+                ->set_view('output', $this->path_admin.'reset_pass')
+                ->build('admin/no_auth');
+        
+    }
+
+        public function _send_forgotten_code($data = NULL)
     {
         if(!$data)
         {
