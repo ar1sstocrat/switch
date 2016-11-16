@@ -60,7 +60,6 @@ class Auth extends MY_Controller
         {
             $remember = (bool) $this->input->post('remember');
             $login = $this->ion_auth->login($this->input->post('email'), $this->input->post('password'), $remember);
-            $this->firephp->log($this->user);
             if($login)
             {
                 redirect($this->path_admin);
@@ -96,7 +95,6 @@ class Auth extends MY_Controller
         if($validation)
         {
             $forgoten = $this->ion_auth->forgotten_password($this->input->post('email'));
-            $this->firephp->log($forgoten);
             if($forgoten)
             {
                 if($this->_send_forgotten_code($forgoten))
@@ -154,7 +152,6 @@ class Auth extends MY_Controller
         {
             
             $reset = $this->ion_auth_model->reset_password($this->input->post('email'), $this->input->post('new_pass'));
-            $this->firephp->log($reset);
             if($reset)
             {
                 $this->session->set_flashdata('message', $this->ion_auth->messages());
@@ -176,7 +173,7 @@ class Auth extends MY_Controller
         
     }
 
-        public function _send_forgotten_code($data = NULL)
+    public function _send_forgotten_code($data = NULL)
     {
         if(!$data)
         {
