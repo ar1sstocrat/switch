@@ -8,7 +8,7 @@
     <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
-    <title>Free Responsive Admin Theme - ZONTAL</title>
+    <title>TECH</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME ICONS  -->
@@ -27,9 +27,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <strong>Email: </strong>info@yourdomain.com
+                    <strong>Admin Email: </strong>vn_svp@volia.com
                     &nbsp;&nbsp;
-                    <strong>Support: </strong>+90-897-678-44
                 </div>
 
             </div>
@@ -46,7 +45,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    &copy; <?=date('Y');?> YourCompany | By : <a href="http://www.designbootstrap.com/" target="_blank">DesignBootstrap</a>
+                   &copy; Developed by Taras Besarab 2016 | Desig by : <a href="http://www.designbootstrap.com/" target="_blank">DesignBootstrap</a>
                 </div>
 
             </div>

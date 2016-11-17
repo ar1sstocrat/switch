@@ -10,10 +10,10 @@
             </div>
             <div class="row">
                 <form action="/auth/login" method="post" class="col-md-6">
-                    <label>Enter Email ID : </label>
+                    <label>Введите Email: </label>
                     <input placeholder="E-mail" name="email" type="email" autofocus class="form-control" />
                     <?=form_error('email');?>
-                    <label>Enter Password :  </label>
+                    <label>Введите пароль:  </label>
                     <input placeholder="Пароль" name="password" type="password" value="" class="form-control" />
                     <?=form_error('password');?>
                     <label>

@@ -27,7 +27,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <strong>Email: </strong>info@yourdomain.com
+                    <strong>Admin Email: </strong>vn_svp@volia.com
                     &nbsp;&nbsp;
                 </div>
 
@@ -49,11 +49,10 @@
                 </a>
 
             </div>
-
             <div class="left-div">
-                <a href="/auth/registration" class="fa fa-user-plus login-icon" ></a>
-        </div>
+            <?=uri_string() == 'login' ? '<a href="/auth/registration" class="fa fa-user-plus login-icon" ></a>' : '<i class="fa fa-user-plus login-icon" ></i>'?>
             </div>
+        </div>
         </div>
     <!-- LOGO HEADER END-->
    
@@ -62,7 +61,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    &copy; <?=date('Y');?> YourCompany | By : <a href="http://www.designbootstrap.com/" target="_blank">DesignBootstrap</a>
+                    &copy; Developed by Taras Besarab 2016 | Desig by : <a href="http://www.designbootstrap.com/" target="_blank">DesignBootstrap</a>
                 </div>
 
             </div>

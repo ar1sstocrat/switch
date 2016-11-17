@@ -5,7 +5,6 @@
                 <div class="col-md-12">
                     <h4 class="page-head-line">Пожалуйста введите данные для создания учетной записи</h4>
                 </div>
-
             </div>
             <div class="row">
                 <form action="/auth/registration" method="post" class="col-md-6" enctype="multipart/form-data">
@@ -52,7 +51,7 @@
                     <label>Выберите изображение:</label>
                     <input type="file" name="img">
                     <hr />
-                    <input type="submit" name="submit" value="Авторизация" class="btn btn-info"><br>
+                    <input type="submit" name="submit" value="Регистрация" class="btn btn-info"><br>
                 </form>
                 <div class="col-md-6">
                     <div class="panel panel-warning">

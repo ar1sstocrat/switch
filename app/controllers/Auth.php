@@ -252,9 +252,6 @@ class Auth extends MY_Controller
         $this->ion_auth_model->set_message_delimiters('<p class="successful">', '</p>');
         $img = $this->_upload_img();
         $img_path = $img ? '/assets/uploads/img/users/'.$img['file_name'] : '';
-//        $this->firephp->log($img);
-//        $this->firephp->log($this->input->post());
-//        $this->firephp->log($this->_get_username('Андрей', 'Цвигун'));
         $validation = $this->form_validation->run();
         if($validation)
         {
@@ -278,11 +275,18 @@ class Auth extends MY_Controller
             {
                 redirect(site_url());
             }
+            else
+            {
+                $this->session->set_flashdata('css_class', 'alert alert-danger');
+                $this->session->set_flashdata('message', $this->ion_auth->errors());
+            }
         }
         
         
         $this->tpl
             ->set('data', $data)
+            ->set('css_class', $this->session->flashdata('css_class'))
+            ->set('message', $this->session->flashdata('message'))
             ->set_view('output', 'registration')
             ->build('login');
     }
