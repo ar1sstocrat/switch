@@ -57,7 +57,7 @@
                         <!-- user image section-->
                         <div class="user-section">
                             <div class="user-section-inner">
-                                <img src="/assets/admin/img/user.jpg" alt="">
+                                <img src="<?=$user['img']?>" alt="">
                             </div>
                             <div class="user-info">
                                 <div><small><?=$user['first_name']?> <strong><?=$user['last_name']?></strong></small></div>
