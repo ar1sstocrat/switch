@@ -41,6 +41,7 @@ class Users extends Admin_Controller
                 //->set_relation_n_n('group_id', 'users_groups','groups','group_id','user_id', 'description')
                 ->set_relation('department_id','department','short_name')
                 ->unset_add()
+                ->where('username!=', 'root')
                 ->unset_fields($this->unset_field);
         $this->_example_output();
     }
