@@ -20,10 +20,10 @@
                         <input name="remember" type="checkbox" value="Remember Me">Запомнить меня
                     </label>
                     <hr />
-                    <input type="submit" name="submit" value="Авторизация" class="btn btn-info">
+                    <input type="submit" name="submit" value="Авторизация" class="btn btn-info"><br>
+                    <a href="/auth/restore" class="info"><small>Забыли пароль?</small></a>
                 </form>
                 <?=  isset($message)? $info : '';?>
-
             </div>
         </div>
     </div>

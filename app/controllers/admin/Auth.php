@@ -97,6 +97,7 @@ class Auth extends MY_Controller
             $forgoten = $this->ion_auth->forgotten_password($this->input->post('email'));
             if($forgoten)
             {
+                $forgoten['path'] = '/admin/auth/reset_password/';
                 if($this->_send_forgotten_code($forgoten))
                 {
                     $this->session->set_flashdata('message', $this->ion_auth->messages());

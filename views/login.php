@@ -51,7 +51,7 @@
             </div>
 
             <div class="left-div">
-                <i class="fa fa-user-plus login-icon" ></i>
+                <a href="/auth/registration" class="fa fa-user-plus login-icon" ></a>
         </div>
             </div>
         </div>

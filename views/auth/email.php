@@ -8,7 +8,7 @@
                 </div>
                 <div style="border-top-color: #bce8f1;">
                     <p><?=lang('email_forgot_password_hbody')?></p>
-                    <p><?=sprintf(lang('email_forgot_password_subheading'), anchor('/admin/auth/reset_password/'.$forgotten_password_code, lang('email_forgot_password_link')));?></p>
+                    <p><?=sprintf(lang('email_forgot_password_subheading'), anchor($path.$forgotten_password_code, lang('email_forgot_password_link')));?></p>
                     <p><?=lang('email_forgot_password_fbody')?></p>
                 </div>
                 <div style=" padding: 10px 15px; background-color: #f5f5f5; border-top: 1px solid #ddd; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;">
