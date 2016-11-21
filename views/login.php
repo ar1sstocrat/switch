@@ -8,7 +8,7 @@
     <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
-    <title>Free Responsive Admin Theme - ZONTAL</title>
+    <title>Авторизация TECH</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME ICONS  -->
@@ -43,7 +43,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="http://vinnitsa.volia.com">
+                <a class="navbar-brand" href="http://vinnitsa.volia.com" target="blank">
 
                     <img src="http://volia.com/user/img/logo/logo.png?1454069191" alt="" />
                 </a>

@@ -27,8 +27,9 @@ class MY_Model extends CI_Model
     
     public function get_one_record($table, $id)
     {
-        return $this->db->get($table)
+        return $this->db
                 ->where('id', $id)
+                ->get($table)
                 ->row();
     }
 }

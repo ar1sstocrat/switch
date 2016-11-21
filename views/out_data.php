@@ -4,9 +4,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">
+    <a class="navbar-brand" href="http://vinnitsa.volia.com" target="blank">
 
-                    <img src="/img/logo.png" />
+                    <img src="http://volia.com/user/img/logo/logo.png?1454069191" alt="" />
                 </a>
 
             </div>
@@ -22,17 +22,19 @@
                             <div class="dropdown-menu dropdown-settings">
                                 <div class="media">
                                     <a class="media-left" href="#">
-                                        <img src="/img/64-64.jpg" alt="" class="img-rounded" />
+                                        <img src="<?=$user->img?>" alt="" class="img-rounded" />
                                     </a>
                                     <div class="media-body">
-                                        <h4 class="media-heading">Jhon Deo Alex </h4>
-                                        <h5>Developer & Designer</h5>
+                                        <h4 class="media-heading"><?=$user->last_name.' '.$user->first_name.' '.$user->patronimyc?></h4>
+                                        <h5><?=$user->post_name?></h5>
+                                        <h5><?=$user->department_name?></h5>
 
                                     </div>
                                 </div>
                                 <hr />
-                                <h5><strong>Personal Bio : </strong></h5>
-                                Anim pariatur cliche reprehen derit.
+                                <h5><strong>Контактная информация: </strong></h5>
+                                <strong>Телефон: </strong><?=$user->phone?><br>
+                                <strong>Email: </strong><?=$user->email?>
                                 <hr />
                                 <a href="#" class="btn btn-info btn-sm">Full Profile</a>&nbsp; <a href="/auth/logout" class="btn btn-danger btn-sm">Выйти</a>
 

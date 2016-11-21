@@ -20,4 +20,16 @@ class Mod_main extends MY_Model
         $menu = $this->db->get();
         return $menu->result();       
     }
+    public function user_info($id = NULL)
+    {
+        return $this->db
+                ->where('u.id', $id)
+                ->select('u.username, u.email, u.first_name, u.last_name, u.company, u.phone, u.patronimyc, u.img, '
+                        . 'd.name AS department_name, d.short_name, d.description, p.name AS post_name')
+                ->from('users u')
+                ->join('department d', 'd.id=u.department_id')
+                ->join('post p', 'p.id=u.post_id')
+                ->get()
+                ->row();
+    }
 }
