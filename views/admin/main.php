@@ -1,130 +1,169 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Панель администратора -SIMINTA</title>
-    <?php foreach($css_files as $files=>$css):?>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Панель администратора - <?=$current_section?></title>
+<?php foreach($css_files as $files=>$css):?>
     <link type="text/css" rel="stylesheet" href="<?=$css?>">
-    <?php endforeach;?>
-    <!-- Core CSS - Include with every page -->
-    <link href="/assets/admin/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
-    <link href="/assets/admin/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link href="/assets/admin/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
-    <link href="/assets/admin/css/style.css" rel="stylesheet" />
-    <link href="/assets/admin/css/main-style.css" rel="stylesheet" />
-    <!-- Page-Level CSS -->
-    <link href="/assets/admin/plugins/morris/morris-0.4.3.min.css" rel="stylesheet" />
-    
-   </head>
+<?php endforeach;?>
+<link href="/assets/admin/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/admin/css/datepicker3.css" rel="stylesheet">
+<link href="/assets/admin/css/styles.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+
+<!--[if lt IE 9]>
+<link href="/assets/admin/css/rgba-fallback.css" rel="stylesheet">
+<script src="/assets/admin/js/html5shiv.js"></script>
+<script src="/assets/admin/js/respond.min.js"></script>
+<![endif]-->
+
+</head>
+
 <body>
-    <!--  wrapper -->
-    <div id="wrapper">
-        <!-- navbar top -->
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
-            <!-- navbar-header -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="http://vinnitsa.volia.com" target="blank">
-                    <img src="http://volia.com/user/img/logo/logo.png?1454069191" alt="" />
-                </a>
-            </div>
-            <!-- end navbar-header -->
-            <!-- navbar-top-links -->
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+                            <a class="navbar-brand" href="http://vinnitsa.volia.com" target="blank"><span>ВОЛЯ</span> Винница</a>
+				<ul class="nav navbar-top-links navbar-right">
+					<li class="dropdown">
+						<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+							<i class="glyphicon glyphicon-bell"></i>  <span class="label label-primary">18</span>
+						</a>
+						<ul class="dropdown-menu dropdown-alerts">
+							<li>
+								<a href="#">
+									<div>
+										<em class="glyphicon glyphicon-envelope"></em> 1 New Message
+										<span class="pull-right text-muted small">3 mins ago</span>
+									</div>
+								</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="#">
+									<div>
+										<em class="glyphicon glyphicon-heart"></em> 12 New Likes
+										<span class="pull-right text-muted small">4 mins ago</span>
+									</div>
+								</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="#">
+									<div>
+										<em class="glyphicon glyphicon-user"></em> 5 New Followers
+										<span class="pull-right text-muted small">4 mins ago</span>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div><!-- /.container-fluid -->
+	</nav>
+		
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
             
-            <ul class="nav navbar-top-links navbar-right">
-                <a href="#" class="btn btn-primary btn-circle"><i class="fa fa-user fa-fw"></i></a>
-                <a href="#" class="btn btn-primary btn-circle"><i class="fa fa-gear fa-fw"></i></a>
-                <a href="/admin/auth/logout" class="btn btn-primary btn-circle"><i class="fa fa-sign-out fa-fw"></i></a>
-            </ul>
-            <!-- end navbar-top-links -->
-
-        </nav>
-        <!-- end navbar top -->
-
-        <!-- navbar side -->
-        <nav class="navbar-default navbar-static-side" role="navigation">
-            <!-- sidebar-collapse -->
-            <div class="sidebar-collapse">
-                <!-- side-menu -->
-                <ul class="nav" id="side-menu">
-                    <li>
-                        <!-- user image section-->
-                        <div class="user-section">
-                            <div class="user-section-inner">
-                                <img src="<?=$user['img']?>" alt="">
-                            </div>
-                            <div class="user-info">
-                                <div><small><?=$user['first_name']?> <strong><?=$user['last_name']?></strong></small></div>
-                                <div class="user-text-online">
-                                    <span class="user-circle-online btn btn-success btn-circle "></span>&nbsp;Online
-                                </div>
-                            </div>
-                        </div>
-                        <!--end user image section-->
-                    </li>
-                    <li class="sidebar-search">
-                        <!-- search section-->
-                        <div class="input-group custom-search-form">
-                            <input type="text" class="form-control" placeholder="Search...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                        </div>
-                        <!--end search section-->
-                    </li>
-                    <?php foreach($menu as $k=>$val):?>
-                    <li class="<?php echo $val==$current_section ? 'selected' : NULL;?>">
-                        <a href="/<?=  $k?>"><i class="fa fa-dashboard fa-fw"></i><?php echo $val?></a>
-                    </li>
-                    <?php endforeach;?>
-                    
-                </ul>
-                <!-- end side-menu -->
+            <div class="user-settings-wrapper ">
+                <img alt="<?=$user['username']?>" src="<?=$user['img']?>" width="50" height="50" class="img-circle small ">
+                <strong><?=$user['first_name'].' '.$user['last_name']?></strong>
             </div>
-            <!-- end sidebar-collapse -->
-        </nav>
-        <!-- end navbar side -->
-        <!--  page-wrapper -->
-        <div id="page-wrapper">
+            <ul class="nav menu"><li role="presentation" class="divider"></li></ul>
+            <form role="search">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Поиск">
+			</div>
+            </form>
+		<ul class="nav menu">
+<?php foreach($menu as $key=>$value)
+{
+    if(!is_array($value))
+    {
+        $active = $current_section==$value ? 'active' : '';
+        echo "<li class='{$active}'><a href='/{$key}'>{$value}</a></li>";
+    }
+    else
+    {
+        foreach($value as $keys=>$val)
+        {
+            echo "<li class='parent'><a href='#'>{$keys} <span data-toggle='collapse' href='#{$key}' class='icon pull-right'><em class='glyphicon glyphicon-s glyphicon-plus'></em></span></a>";
+            echo "<ul class='children collapse' id='{$key}'>";
+            foreach($val as $k=>$v)
+            {
+                $active = $current_section==$v ? 'active' : '';
+                echo "<li><a class='{$active}' href='/{$k}'><span class='glyphicon glyphicon-share-alt'></span> {$v}</a></li>";
+            }
+            echo "</ul>";
+        }
+    }
+}
+?>
+			<li role="presentation" class="divider"></li>
+			<li><a href="/admin/auth/logout"><span class="glyphicon glyphicon-log-out"></span>Выйти</a></li>
+		</ul>
+	</div><!--/.sidebar-->
+		
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+				<li class="active"><?=$current_section;?></li>
+			</ol>
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header"><?=$current_section;?></h1>
+			</div>
+		</div><!--/.row-->
+		<?=$output?>
+	</div>	<!--/.main-->
 
-            <div class="row">
-                <!-- Page Header -->
-                <div class="col-lg-12">
-                    <h1 class="page-header"><?=$current_section?></h1>
-                </div>
-                <!--End Page Header -->
-            </div>
-            <div class="content">
-            <?php echo $output?>
-            </div>
-            
-        </div>
-        <!-- end page-wrapper -->
-
-    </div>
-    <!-- end wrapper -->
-
-    <!-- Core Scripts - Include with every page -->
-    <script src="/assets/admin/plugins/jquery-1.10.2.js"></script>
-    <script src="/assets/admin/plugins/bootstrap/bootstrap.min.js"></script>
-    <script src="/assets/admin/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="/assets/admin/plugins/pace/pace.js"></script>
-    <script src="/assets/admin/scripts/siminta.js"></script>
-    <!-- Page-Level Plugin Scripts-->
-    <script src="/assets/admin/plugins/morris/raphael-2.1.0.min.js"></script>
-    <script src="/assets/admin/plugins/morris/morris.js"></script>
-    <script src="/assets/admin/scripts/dashboard-demo.js"></script>
-    <?php foreach($js_files as $file):?>
-    <script src="<?=$file?>"></script>
-    <?php endforeach;?>
+	<script src="/assets/admin/js/jquery-1.11.1.min.js"></script>
+	<script src="/assets/admin/js/bootstrap.min.js"></script>
+	<script src="/assets/admin/js/chart.min.js"></script>
+	<script src="/assets/admin/js/chart-data.js"></script>
+	<script src="/assets/admin/js/easypiechart.js"></script>
+	<script src="/assets/admin/js/easypiechart-data.js"></script>
+	<script src="/assets/admin/js/bootstrap-datepicker.js"></script>
+	<script src="/assets/admin/js/custom.js"></script>
+        <?php foreach($js_files as $file):?>
+            <script src="<?=$file?>"></script>
+        <?php endforeach;?>
+	<script>
+	window.onload = function(){ 
+		var chart1 = document.getElementById("line-chart").getContext("2d");
+		window.myLine = new Chart(chart1).Line(lineChartData, {
+			responsive : true,  
+			scaleLineColor: "rgba(255,255,255,.2)", 
+			scaleGridLineColor: "rgba(255,255,255,.05)", 
+			scaleFontColor: "#ffffff"
+		});
+		var chart2 = document.getElementById("bar-chart").getContext("2d");
+		window.myBar = new Chart(chart2).Bar(barChartData, {
+			responsive : true,  
+			scaleLineColor: "rgba(255,255,255,.2)", 
+			scaleGridLineColor: "rgba(255,255,255,.05)", 
+			scaleFontColor: "#ffffff"
+		});
+		var chart5 = document.getElementById("radar-chart").getContext("2d");
+		window.myRadarChart = new Chart(chart5).Radar(radarData, {
+			responsive : true,
+			scaleLineColor: "rgba(255,255,255,.05)",
+			angleLineColor : "rgba(255,255,255,.2)"
+		});
+		
+	};
+	</script>
 </body>
 
 </html>
+

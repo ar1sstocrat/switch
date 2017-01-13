@@ -54,4 +54,3 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['admin/login'] = 'admin/auth/login';
 $route['login'] = 'auth/login';
-$route['admin/switch'] = 'admin/elcon';

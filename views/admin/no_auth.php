@@ -1,36 +1,51 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Авторизация в панели администратора</title>
-    <!-- Core CSS - Include with every page -->
-    <link href="/assets/admin/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
-    <link href="/assets/admin/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link href="/assets/admin/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
-   <link href="/assets/admin/css/style.css" rel="stylesheet" />
-      <link href="/assets/admin/css/main-style.css" rel="stylesheet" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Панель администратора</title>
+
+<link href="/assets/admin/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/admin/css/datepicker3.css" rel="stylesheet">
+<link href="/assets/admin/css/styles.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+
+<!--[if lt IE 9]>
+<link href="/assets/admin/css/rgba-fallback.css" rel="stylesheet">
+<script src="/assets/admin/js/html5shiv.js"></script>
+<script src="/assets/admin/js/respond.min.js"></script>
+<![endif]-->
 
 </head>
 
-<body class="body-Login-back">
+<body>
+	
+	<?=$output;?>
+	
+		
 
-    <div class="container">
-       
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4 text-center logo-margin ">
-              <img src="http://volia.com/user/img/logo/logo.png?1454069191" alt=""/>
-                </div>
-          <?=$output;?>
-        </div>
-    </div>
+	<script src="/assets/admin/js/jquery-1.11.1.min.js"></script>
+	<script src="/assets/admin/js/bootstrap.min.js"></script>
+	<script src="/assets/admin/js/chart.min.js"></script>
+	<script src="/assets/admin/js/chart-data.js"></script>
+	<script src="/assets/admin/js/easypiechart.js"></script>
+	<script src="/assets/admin/js/easypiechart-data.js"></script>
+	<script src="/assets/admin/js/bootstrap-datepicker.js"></script>
+	<script>
+		!function ($) {
+			$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  
+				$(this).find('em:first').toggleClass("glyphicon-minus");	  
+			}); 
+			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+		}(window.jQuery);
 
-     <!-- Core Scripts - Include with every page -->
-    <script src="/assets/admin/plugins/jquery-1.10.2.js"></script>
-    <script src="/assets/admin/plugins/bootstrap/bootstrap.min.js"></script>
-    <script src="/assets/admin/plugins/metisMenu/jquery.metisMenu.js"></script>
-
+		$(window).on('resize', function () {
+		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+		})
+		$(window).on('resize', function () {
+		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+		})
+	</script>	
 </body>
 
 </html>

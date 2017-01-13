@@ -54,8 +54,8 @@ class Auth extends MY_Controller
     {
         $this->form_validation->set_rules($this->rules_auth);
         $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
-        $this->ion_auth_model->set_error_delimiters('<p class="error">', '</p>');
-        $this->ion_auth_model->set_message_delimiters('<p class="successful">', '</p>');
+        $this->ion_auth_model->set_error_delimiters('<div class="alert bg-warning" role="alert"><span class="glyphicon glyphicon-warning-sign"></span>', '</div>');
+        $this->ion_auth_model->set_message_delimiters('<div class="alert bg-success" role="alert"><span class="glyphicon glyphicon-check"></span>', '</div>');
         if($this->form_validation->run())
         {
             $remember = (bool) $this->input->post('remember');
@@ -74,8 +74,7 @@ class Auth extends MY_Controller
         $this->tpl
                 ->set('message', $this->session->flashdata('message'))
                 ->set_view('auth_error', $this->path_admin.'message')
-                ->set_view('auth_form', $this->path_admin.'auth_form')
-                ->set_view('output', $this->path_admin.'auth_select')
+                ->set_view('output', $this->path_admin.'auth_form')
                 ->build('admin/no_auth');
     }   
     
@@ -89,8 +88,8 @@ class Auth extends MY_Controller
     {
         $this->form_validation->set_rules($this->check_email);
         $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
-        $this->ion_auth_model->set_error_delimiters('<p class="error">', '</p>');
-        $this->ion_auth_model->set_message_delimiters('<p class="successful">', '</p>');
+        $this->ion_auth_model->set_error_delimiters('<div class="alert bg-warning" role="alert"><span class="glyphicon glyphicon-warning-sign"></span>', '</div>');
+        $this->ion_auth_model->set_message_delimiters('<div class="alert bg-success" role="alert"><span class="glyphicon glyphicon-check"></span>', '</div>');
         $validation = $this->form_validation->run();
         if($validation)
         {
@@ -119,9 +118,8 @@ class Auth extends MY_Controller
         
         $this->tpl
                 ->set('message', $this->session->flashdata('message'))
-                ->set_view('mail_not_sent', $this->path_admin.'mail_not_sent')
                 ->set_view('mail_sent', $this->path_admin.'message')
-                ->set_view('output', $this->path_admin.'restore_pass')
+                ->set_view('output', $this->path_admin.'mail_not_sent')
                 ->build('admin/no_auth');
     }
     
@@ -146,8 +144,8 @@ class Auth extends MY_Controller
         if(empty($this->input->post())) show_404 ();
         $this->form_validation->set_rules($this->reset_pass);
         $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
-        $this->ion_auth_model->set_error_delimiters('<p class="error">', '</p>');
-        $this->ion_auth_model->set_message_delimiters('<p class="successful">', '</p>');
+        $this->ion_auth_model->set_error_delimiters('<div class="alert bg-warning" role="alert"><span class="glyphicon glyphicon-warning-sign"></span>', '</div>');
+        $this->ion_auth_model->set_message_delimiters('<div class="alert bg-success" role="alert"><span class="glyphicon glyphicon-check"></span>', '</div>');
         $validation = $this->form_validation->run();
         if($validation)
         {
@@ -167,9 +165,8 @@ class Auth extends MY_Controller
         $this->tpl
                 ->set('email', $this->input->post('email'))
                 ->set('message', $this->session->flashdata('message'))
-                ->set_view('reset_pass_form', $this->path_admin.'reset_pass_form')
                 ->set_view('reset_pass_fail', $this->path_admin.'message')
-                ->set_view('output', $this->path_admin.'reset_pass')
+                ->set_view('output', $this->path_admin.'reset_pass_form')
                 ->build('admin/no_auth');
         
     }

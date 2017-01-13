@@ -68,19 +68,32 @@ class Admin_Controller extends MY_Controller
         $this->crud->display_as('description', 'Описание');
         $this->crud->set_language('russian');
         $this->menu = array(
-            '' => 'На сайт',
-            'admin' => 'Панель администратора',
-            'admin/users' => 'Пользователи',
+            '' => '<span class="glyphicon glyphicon-home"></span>На сайт',
+            'admin' => '<span class="glyphicon glyphicon-dashboard"></span>Панель администратора',
             'admin/pages' => 'Страницы',
-            'admin/department' => 'Отдел/Служба', 
-            'admin/post' => 'Должность',
-            'admin/elcon' => 'Коммутаторы ОК',
-            'admin/ip' => 'Реальные ІР-адреса',
-            'lou' => 'ЛОУ',
-            'address_base' => 'Адрессная база',
-            'admin/wiki' => 'WIKI'
+            'user_info' => array(
+                '<span class="glyphicon glyphicon-user"></span>Информация о пользователях' => array(
+                    'admin/users' => 'Пользователи',
+                    'admin/department' => 'Отдел/Служба',
+                    'admin/post' => 'Должность',
+                ),
+            ),
+            'net_info' => array(
+                '<span class="glyphicon glyphicon-fire"></span>Услуга интернет' => array(
+                    'admin/ip' => 'Реальные ІР',
+                    'admin/switches' => 'Коммутаторы',
+                ),
+            ),
+            'elcon' => array(
+                '<span class="glyphicon glyphicon-hdd"></span>Коммутаторы ОК' => array(
+                    'admin/elcon' => 'Коммутаторы ОК',
+                    'admin/lou' => 'ЛОУ',
+                    'admin/address_base' => 'Адрессная база',
+                ),
+            ),
+            'admin/wiki' => '<span class="glyphicon glyphicon-book"></span>WIKI',
         );
-    }
+    } 
     
     public function _example_output()
     {
