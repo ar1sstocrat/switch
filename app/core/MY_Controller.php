@@ -70,7 +70,7 @@ class Admin_Controller extends MY_Controller
         $this->menu = array(
             '' => '<span class="glyphicon glyphicon-home"></span>На сайт',
             'admin' => '<span class="glyphicon glyphicon-dashboard"></span>Панель администратора',
-            'admin/pages' => 'Страницы',
+            'admin/pages' => '<span class="glyphicon glyphicon-list"></span>Страницы',
             'user_info' => array(
                 '<span class="glyphicon glyphicon-user"></span>Информация о пользователях' => array(
                     'admin/users' => 'Пользователи',
@@ -82,13 +82,19 @@ class Admin_Controller extends MY_Controller
                 '<span class="glyphicon glyphicon-fire"></span>Услуга интернет' => array(
                     'admin/ip' => 'Реальные ІР',
                     'admin/switches' => 'Коммутаторы',
+                    'admin/switches/connection' => 'Коммутация',
+                    'admin/switches/vlan' => 'VLAN',
                 ),
             ),
             'elcon' => array(
-                '<span class="glyphicon glyphicon-hdd"></span>Коммутаторы ОК' => array(
+                '<span class="glyphicon glyphicon-hdd"></span>Информация для ТО/ВОЛС' => array(
                     'admin/elcon' => 'Коммутаторы ОК',
                     'admin/lou' => 'ЛОУ',
-                    'admin/address_base' => 'Адрессная база',
+                    'admin/address' => 'Адрессная база',
+                    'admin/address/districts' => 'Районы',
+                    'admin/address/locality' => 'Участок ТО',
+                    'admin/address/house' => 'Тип здания',
+                    'admin/address/net_type' => 'Тип сети',
                 ),
             ),
             'admin/wiki' => '<span class="glyphicon glyphicon-book"></span>WIKI',

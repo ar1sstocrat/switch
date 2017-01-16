@@ -12,4 +12,11 @@ class Mod_admin extends MY_Model
     {
         parent::__construct();
     }
+    
+    public function add_data($data, $table)
+    {
+        $this->db->insert($table, $data);
+    }
+        
+    
 }

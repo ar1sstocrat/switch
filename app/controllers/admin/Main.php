@@ -25,6 +25,6 @@ class Main extends Admin_Controller
                 ->build('admin/main');
         $this->firephp->log($this->group_id);
         $this->firephp->log($this->user);
-        $this->firephp->log($this->session->all_userdata);        
+        $this->firephp->log(inet_ntop($this->user['ip_address']));        
     }
 }

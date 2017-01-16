@@ -32,4 +32,14 @@ class MY_Model extends CI_Model
                 ->get($table)
                 ->row();
     }
+    
+    public function delete_record($table, $condition)
+    {
+        $this->db->delete($table, $condition);
+    }
+    
+    public function update_record($table, $id = array(), $data)
+    {
+        $this->db->update($table, $data, $id);
+    }
 }
